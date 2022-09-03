@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoList</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="title">Todo List&checkmark;</h1>
+    </header>
+    <form class="form-wrapper">
+      <input type="text" class="form-input" />
+      <button class="form-button"><b>+</b></button>
+      <div class="select">
+        <select name="todos" class="todo-filter">
+          <option value="All">All</option>
+          <option value="Completed">Completed</option>
+          <option value="Uncompleted">Uncompleted</option>
+        </select>
+      </div>
+      <button id="remove-all">Remove All</button>
+    </form>
+    <section class="todo-section">
+      <ul class="todo-list"></ul>
+    </section>
+    <script src="./app.js"></script>
+  </body>
+</html>

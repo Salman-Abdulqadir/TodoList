@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  background-image: linear-gradient(120deg, #f95654, #f56563);
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+header {
+  font-size: 2rem;
+}
+header,
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+}
+form button,
+form input,
+form select {
+  padding: 0.5rem;
+  border: none;
+  font-size: 2rem;
+  background-color: white;
+  outline: none;
+}
+form button {
+  padding: 0.5rem 1.5rem;
+  font-size: 2rem;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+form button:hover {
+  color: white;
+  background: #f79f9e;
+}
+
+select {
+  margin: 0rem 1rem;
+}
+
+/* todo section */
+.todo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo-list {
+  list-style: none;
+  min-width: 30%;
+}
+.todo {
+  color: black;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.5s ease;
+}
+
+.todo button {
+  margin: 0rem 0.5rem;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  color: white;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+.delete-btn {
+  background-color: #f95654;
+}
+.check-btn {
+  background-color: rgb(82, 209, 82);
+}
+.todo button:hover {
+  background-color: white;
+}
+.delete-btn:hover {
+  color: #f95654;
+}
+.check-btn:hover {
+  color: rgb(82, 209, 82);
+}
+
+.todo li {
+  flex: 1;
+  font-size: 2rem;
+}
+button b {
+  pointer-events: none;
+}
+
+.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+/* animations */
+.fall {
+  transform: translateY(8rem) rotatez(45deg);
+  opacity: 0;
+}
