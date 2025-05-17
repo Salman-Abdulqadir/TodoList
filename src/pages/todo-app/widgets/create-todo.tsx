@@ -11,7 +11,7 @@ const CreateTodo = () => {
       }}
     >
       <input
-        className="text-2xl p-4 border-none rounded-md w-full text-inherit"
+        className="p-4 border-none rounded-md w-full text-inherit bg-foreground"
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}

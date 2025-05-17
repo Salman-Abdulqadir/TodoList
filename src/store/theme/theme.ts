@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type ThemeTypes = "light" | "dark";
+export type ThemeTypes = "light" | "dark";
 
 export const THEME_STORAGE_KEY = "TODO_APP_THEME";
 

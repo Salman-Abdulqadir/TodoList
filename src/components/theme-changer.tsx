@@ -1,6 +1,6 @@
 import { useTheme } from "../store/theme/theme";
-import moonIcon from "../images/icon-moon.svg";
-import sunIcon from "../images/icon-sun.svg";
+import moonIcon from "../assets/images/icon-moon.svg";
+import sunIcon from "../assets/images/icon-sun.svg";
 
 const ThemeChanger = () => {
   const { theme, setTheme } = useTheme();

@@ -1,3 +1,4 @@
+/* LIGHT THEME */
 :root {
   /* BACKGROUNDS */
   --background: hsl(236, 33%, 92%);
@@ -17,8 +18,14 @@
   /* TEXT */
   --primary-text: hsl(235, 19%, 35%);
   --secondary-text: hsl(236, 9%, 61%);
+  --title-text: hsl(0, 0%, 98%);
+
+  /* BACKGROUND IMAGES */
+  --desktop-bg: url("../assets/images/bg-desktop-light.jpg");
+  --mobile-bg: url("../assets/images/bg-mobile-light.jpg");
 }
 
+/* DARK THEME */
 .dark {
   /* BACKGROUNDS */
   --background: hsl(235, 24%, 19%);
@@ -38,16 +45,21 @@
   /* TEXT */
   --primary-text: hsl(234, 39%, 85%);
   --secondary-text: hsl(234, 11%, 52%);
+  --title-text: hsl(234, 39%, 85%);
+
+  /* BACKGROUND IMAGES */
+  --desktop-bg: url("../assets/images/bg-desktop-dark.jpg");
+  --mobile-bg: url("../assets/images/bg-mobile-dark.jpg");
 }
 
 /* LINKING VARS TO TAILWIND */
 @theme inline {
-  /* BACKGROUNDS */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-gradient: var(--primary-gradient);
   --color-primary-border: var(--primary-border);
   --color-primary-text: var(--primary-text);
-  --color-secondary-text: var(--primary-secondary-text);
+  --color-secondary-text: var(--secondary-text);
+  --color-title-text: var(--title-text);
 }

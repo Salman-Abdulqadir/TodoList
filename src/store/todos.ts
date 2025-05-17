@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import type { ITodo } from "../types/todos";
-import { TodosService } from "../services/todos.service";
+import { TodosService } from "../services/todos-service";
 
 type TodosStore = {
   todos: ITodo[];
