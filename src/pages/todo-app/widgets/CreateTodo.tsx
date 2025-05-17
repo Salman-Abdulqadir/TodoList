@@ -1,0 +1,24 @@
+import { useTodos } from "../../../store/todos";
+
+const CreateTodo = () => {
+  const { inputValue, setInputValue, addTodo } = useTodos();
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        addTodo();
+      }}
+    >
+      <input
+        className="text-2xl p-4 border-none rounded-md w-full text-inherit"
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Create a new todo..."
+      />
+    </form>
+  );
+};
+
+export default CreateTodo;
