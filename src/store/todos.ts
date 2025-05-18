@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import type { ITodo } from "../types/todos";
 import { TodosService } from "../services/todos-service";
+import { toast } from "sonner";
 
 type TodosStore = {
   todos: ITodo[];
@@ -43,6 +44,7 @@ export const useTodos = create<TodosStore>((set, get) => ({
       TodosService.addTodo(inputValue);
       setInputValue("");
       refreshTodos();
+      toast.success("Task added successfully!");
     }
   },
 
@@ -52,6 +54,7 @@ export const useTodos = create<TodosStore>((set, get) => ({
   },
 
   updateTodoStatus: (id: string, completed: boolean) => {
+    console.log("I am here", id, completed);
     TodosService.updateTodoStatus(id, completed);
     get().refreshTodos();
   },
