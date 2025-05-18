@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   DndContext,
   closestCenter,
@@ -16,16 +17,14 @@ import { CSS } from "@dnd-kit/utilities";
 import { useTodos } from "../../../store/todos";
 import type { ITodo } from "../../../types/todos";
 import Checkbox from "../../../components/checkbox";
+import CrossIcon from "../../../assets/images/icon-cross.svg";
+import GripIcon from "../../../components/grip-icon";
+import useBreakpoint from "../../../lib/hooks/use-breakpoints";
 
-const SortableTodoItem = ({
-  todo,
-  index,
-  updateTodoStatus,
-}: {
-  todo: ITodo;
-  index: number;
-  updateTodoStatus: (id: string, completed: boolean) => void;
-}) => {
+const SortableTodoItem = ({ todo, index }: { todo: ITodo; index: number }) => {
+  const [hovered, setHovered] = useState(false);
+  const { updateTodoStatus, deleteTodo } = useTodos();
+  const breakpoint = useBreakpoint();
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: todo.id });
 
@@ -38,36 +37,46 @@ const SortableTodoItem = ({
     <li
       ref={setNodeRef}
       style={style}
-      {...attributes}
-      {...listeners}
-      className={`px-8 py-4 flex gap-2 items-center w-full ${
+      className={`relative cursor-pointer px-4 md:px-6 py-4 flex gap-2 items-center justify-between w-full ${
         index !== undefined ? "border-b border-primary-border" : ""
       }`}
-      onClick={() => {
-        console.log("hello");
-        updateTodoStatus(todo.id, !todo.completed);
-      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      <Checkbox
-        checked={todo.completed}
-        onChange={() => {
-          console.log("hello");
-          updateTodoStatus(todo.id, !todo.completed);
-        }}
-      />
-      <p
-        className={` ${
-          todo.completed ? "line-through text-secondary" : "text-secondary"
-        }`}
-      >
-        {todo.title}
-      </p>
+      <div className="flex items-start gap-2">
+        <Checkbox
+          checked={todo.completed}
+          onChange={() => {
+            updateTodoStatus(todo.id, !todo.completed);
+          }}
+        />
+        <p
+          className={`max-w-[500px] whitespace-normal break-words ${
+            todo.completed ? "line-through text-secondary" : "text-secondary"
+          }`}
+        >
+          {todo.title}
+        </p>
+      </div>
+      <div className="flex items-center gap-2">
+        {(["base", "sm"]?.includes(breakpoint) || hovered) && (
+          <button
+            className="cursor-pointer"
+            onClick={() => deleteTodo(todo.id)}
+          >
+            <img src={CrossIcon} alt="Cross" />
+          </button>
+        )}
+        <button {...attributes} {...listeners} className="cursor-grabbing">
+          <GripIcon />
+        </button>
+      </div>
     </li>
   );
 };
 
 const DNDTodos = ({ todos }: { todos: ITodo[] }) => {
-  const { saveTodos, updateTodoStatus } = useTodos();
+  const { saveTodos } = useTodos();
 
   const sensors = useSensors(useSensor(PointerSensor));
 
@@ -94,12 +103,7 @@ const DNDTodos = ({ todos }: { todos: ITodo[] }) => {
       >
         <ul className="list-none m-0 p-0">
           {todos.map((todo, index) => (
-            <SortableTodoItem
-              key={todo.id}
-              todo={todo}
-              index={index}
-              updateTodoStatus={updateTodoStatus}
-            />
+            <SortableTodoItem key={todo.id} todo={todo} index={index} />
           ))}
         </ul>
       </SortableContext>

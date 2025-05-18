@@ -15,7 +15,7 @@ const Filters = () => {
       key={`filter-option-${index}-${option}`}
       className={`font-bold cursor-pointer ${
         selectedFilter !== FILTER_OPTIONS[option]
-          ? "text-primary-text"
+          ? "text-secondary-text hover:text-primary-text"
           : "text-primary"
       }`}
     >
@@ -27,11 +27,14 @@ const Filters = () => {
       <div className=" bg-foreground px-8 py-4 w-full flex items-center justify-between text-sm border-t border-primary-border">
         <span>{activeTodoCount} items left</span>
         <ul className="items-center gap-3 hidden md:flex">{filterOptions}</ul>
-        <button className="cursor-pointer" onClick={clearCompletedTodos}>
+        <button
+          className="cursor-pointer text-secondary-text hover:text-primary-text"
+          onClick={clearCompletedTodos}
+        >
           clear completed
         </button>
       </div>
-      <ul className="bg-foreground py-4 rounded-lg items-center justify-center gap-3 flex md:hidden">
+      <ul className="bg-foreground py-4 rounded-lg items-center justify-center gap-3 flex md:hidden text-sm">
         {filterOptions}
       </ul>
     </div>
@@ -42,10 +45,14 @@ const EmptyTodos = ({ isFilterApplied }: { isFilterApplied: boolean }) => {
   const { setSelectedFilter } = useTodos();
   return (
     <div className="bg-foreground flex-1 flex flex-col space-y-4 justify-center items-center">
-      You don't have any todos
+      <p>You don't have any todos</p>
       {isFilterApplied && (
-        <button onClick={() => setSelectedFilter(FILTER_OPTIONS.All)}>
-          Remove filters
+        <button
+          onClick={() => setSelectedFilter(FILTER_OPTIONS.All)}
+          className="text-sm cursor-pointer text-title-text px-2 py-1 rounded-lg"
+          style={{ background: "var(--primary-gradient)" }}
+        >
+          Remove Filters
         </button>
       )}
     </div>
@@ -76,7 +83,10 @@ const TodoList = () => {
           <Filters />
         </div>
       ) : (
-        <EmptyTodos isFilterApplied={!!todos?.length} />
+        <>
+          <EmptyTodos isFilterApplied={!!todos?.length} />
+          <Filters />
+        </>
       )}
     </div>
   );

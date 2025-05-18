@@ -1,5 +1,5 @@
 import { useState, type InputHTMLAttributes } from "react";
-
+import CheckIcon from "../assets/images/icon-check.svg";
 const Checkbox = (checkboxProps: InputHTMLAttributes<HTMLInputElement>) => {
   const [isHovered, setIsHovered] = useState(false);
   const { checked } = checkboxProps;
@@ -11,11 +11,15 @@ const Checkbox = (checkboxProps: InputHTMLAttributes<HTMLInputElement>) => {
     >
       <input type="checkbox" {...checkboxProps} className="peer sr-only" />
       <div
-        className="w-6 h-6 rounded-full transition border border-primary-border peer-checked:border-none"
+        className="w-6 h-6 rounded-full transition border border-primary-border peer-checked:border-none flex flex-col items-center justify-center"
         style={{
           background: checked ? "var(--primary-gradient)" : "",
         }}
-      />
+      >
+        {checked && (
+          <img src={CheckIcon} alt="check box mark" className="h-3 w-3" />
+        )}
+      </div>
       {/* Gradient borders */}
       {!checked && isHovered && (
         <div

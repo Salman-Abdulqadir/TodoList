@@ -8,7 +8,7 @@ import "./styles/index.css";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
-      <Toaster richColors position="top-center" />
+      <Toaster position="top-center" />
       <TodoApp />
     </ThemeProvider>
   </StrictMode>

@@ -1,7 +1,8 @@
+import Checkbox from "../../../components/checkbox";
 import { useTodos } from "../../../store/todos";
 
 const CreateTodo = () => {
-  const { inputValue, setInputValue, addTodo } = useTodos();
+  const { newTodo, setNewTodo, addTodo } = useTodos();
 
   return (
     <form
@@ -9,12 +10,17 @@ const CreateTodo = () => {
         e.preventDefault();
         addTodo();
       }}
+      className="flex items-center gap-2 bg-foreground px-4 md:px-6 py-2 border-none rounded-md w-full text-inherit"
     >
+      <Checkbox
+        checked={newTodo.completed}
+        onChange={() => setNewTodo("completed", !newTodo.completed)}
+      />
       <input
-        className="p-4 border-none rounded-md w-full text-inherit bg-foreground"
+        className="p-2 border-none w-full text-inherit"
         type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        value={newTodo.value}
+        onChange={(e) => setNewTodo("value", e.target.value)}
         placeholder="Create a new todo..."
       />
     </form>

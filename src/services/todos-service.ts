@@ -17,12 +17,12 @@ export class TodosService {
     }
   }
 
-  static addTodo(title: string) {
+  static addTodo(title: string, completed = false) {
     const allTodos = this.getAllTodos();
     const newTodo = {
       title,
       id: crypto.randomUUID(),
-      completed: false,
+      completed,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };

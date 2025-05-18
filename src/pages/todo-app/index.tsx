@@ -1,16 +1,12 @@
-import { useState } from "react";
 import Background from "../../components/background";
-import Checkbox from "../../components/checkbox";
 import ThemeChanger from "../../components/theme-changer";
 import CreateTodo from "./widgets/create-todo";
 import TodoList from "./widgets/todo-list";
 
 const TodoApp = () => {
-  const [checked, setChecked] = useState(false);
   return (
     <main className="w-full flex flex-col space-y-4 items-center justify-center relative">
       <Background />
-      <Checkbox checked={checked} onChange={() => setChecked(!checked)} />
       <section className="w-full max-w-[700px] h-screen flex flex-col px-4 pt-16 pb-8">
         <header className="flex items-center justify-between mb-[32px]">
           <h1 className="text-4xl tracking-[16px] font-bold text-title-text">
